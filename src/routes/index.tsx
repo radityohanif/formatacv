@@ -17,12 +17,10 @@ import {
   ProjectsForm,
   ActivitiesForm,
   SkillsForm,
-  ImportForm,
   ReviewForm,
 } from "@/components/cv/forms/Forms";
 import { useCVStorage } from "@/hooks/useCVStorage";
 import { getValidationWarnings } from "@/lib/validation";
-import { hasExistingDraft } from "@/lib/jsonImport";
 import { sectionIds, type SectionId } from "@/data/sampleCV";
 
 export const Route = createFileRoute("/")({
@@ -68,7 +66,6 @@ function Index() {
       projects: data.projects.length > 0,
       activities: data.activities.length > 0,
       skills: !!data.additional.technicalSkills.trim(),
-      import: hasExistingDraft(data),
       review: false,
     }),
     [data],
@@ -113,8 +110,6 @@ function Index() {
       <ActivitiesForm data={data} setData={setData} />
     ) : active === "skills" ? (
       <SkillsForm data={data} setData={setData} />
-    ) : active === "import" ? (
-      <ImportForm data={data} setData={setData} />
     ) : (
       <ReviewForm
         data={data}
@@ -134,7 +129,6 @@ function Index() {
         onChange={setActive}
         completion={completion}
         percent={percent}
-        onImportJson={openImport}
       />
 
       <main className="flex min-w-0 flex-1 flex-col">
@@ -172,7 +166,7 @@ function Index() {
 
         <div className="flex min-h-0 flex-1">
           <section
-            className={`min-w-0 flex-1 overflow-y-auto p-4 lg:p-6 ${
+            className={`min-w-0 flex-1 overflow-y-auto p-4 lg:min-w-[360px] lg:flex-[1.15] lg:p-6 ${
               mobileTab === "preview" ? "hidden lg:block" : ""
             }`}
           >
@@ -217,12 +211,12 @@ function Index() {
           </section>
 
           <aside
-            className={`min-w-0 border-l border-border bg-surface lg:w-[46%] xl:w-[42%] ${
+            className={`min-w-0 border-l border-border bg-surface lg:flex-1 lg:min-w-[320px] lg:max-w-[min(48%,560px)] ${
               mobileTab === "edit" ? "hidden lg:block" : "flex-1"
             }`}
           >
             <div className="sticky top-0 h-screen">
-              <PreviewPanel data={data} onReset={resetData} getExportElement={getExportElement} />
+              <PreviewPanel data={data} />
             </div>
           </aside>
         </div>

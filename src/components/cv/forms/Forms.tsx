@@ -10,7 +10,6 @@ import { ChecklistCard } from "../ChecklistCard";
 import { ExportActions } from "../ExportActions";
 import { ValidationBanner } from "../LocalStorageStatus";
 import { ImportJsonButton } from "../json-import/ImportJsonButton";
-import { JsonImportFlow } from "../json-import/JsonImportFlow";
 import type { CVData } from "@/data/sampleCV";
 import { newId, sectionMeta } from "@/data/sampleCV";
 import type { ValidationWarning } from "@/lib/validation";
@@ -637,15 +636,6 @@ export function SkillsForm({ data, setData }: Props) {
           />
         </Field>
       </div>
-    </SectionCard>
-  );
-}
-
-export function ImportForm({ data, setData }: { data: CVData; setData: (d: CVData) => void }) {
-  const m = sectionMeta.import;
-  return (
-    <SectionCard title={m.label} description={m.description} hint={m.hint}>
-      <JsonImportFlow embedded currentData={data} onApply={setData} />
     </SectionCard>
   );
 }

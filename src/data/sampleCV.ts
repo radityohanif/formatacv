@@ -175,7 +175,6 @@ export const sectionIds = [
   "projects",
   "activities",
   "skills",
-  "import",
   "review",
 ] as const;
 
@@ -217,11 +216,6 @@ export const sectionMeta: Record<SectionId, { label: string; description: string
       label: "Skills & Additional",
       description: "Stack, languages, certifications, awards.",
       hint: "Group by category. Skip outdated tools.",
-    },
-    import: {
-      label: "Import JSON",
-      description: "Paste structured CV data to populate faster.",
-      hint: "LinkedIn export, portfolio JSON, or AI-generated profiles.",
     },
     review: {
       label: "Review & Export",

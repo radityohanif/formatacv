@@ -1,23 +1,14 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { CVPreview } from "./CVPreview";
-import { ExportActions } from "./ExportActions";
 import type { CVData } from "@/data/sampleCV";
 
-export function PreviewPanel({
-  data,
-  onReset,
-  getExportElement,
-}: {
-  data: CVData;
-  onReset: () => void;
-  getExportElement: () => HTMLElement | null;
-}) {
+export function PreviewPanel({ data }: { data: CVData }) {
   const [zoom, setZoom] = useState(0.62);
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between gap-2 border-b border-border bg-card/60 px-4 py-2.5">
+      <div className="flex items-center gap-2 border-b border-border bg-card/60 px-4 py-2.5">
         <div className="flex items-center gap-1 rounded-lg border border-border bg-background p-0.5">
           <button
             type="button"
@@ -39,11 +30,6 @@ export function PreviewPanel({
             <Plus className="h-3.5 w-3.5" />
           </button>
         </div>
-        <ExportActions
-          getExportElement={getExportElement}
-          fullName={data.personal.fullName}
-          onReset={onReset}
-        />
       </div>
       <div className="flex-1 overflow-auto bg-[radial-gradient(circle_at_1px_1px,oklch(0.85_0.01_250)_1px,transparent_0)] [background-size:18px_18px] p-6">
         <div
