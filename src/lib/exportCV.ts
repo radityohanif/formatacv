@@ -3,6 +3,8 @@ import { jsPDF } from "jspdf";
 
 const A4_WIDTH_MM = 210;
 const A4_HEIGHT_MM = 297;
+const PAGE_MARGIN_MM = 6;
+const CONTENT_HEIGHT_MM = A4_HEIGHT_MM - PAGE_MARGIN_MM * 2;
 
 function safeColor(value: string, fallback: string) {
   return value.includes("oklch") ? fallback : value;
@@ -42,15 +44,22 @@ function inlineComputedStylesFromSource(source: Element, target: HTMLElement) {
   target.style.borderLeftStyle = computed.borderLeftStyle;
 }
 
-function cloneForCapture(element: HTMLElement) {
+function inlineTreeFromSource(sourceRoot: Element, targetRoot: Element) {
+  const sourceNodes = [sourceRoot, ...sourceRoot.querySelectorAll("*")];
+  const targetNodes = [targetRoot, ...targetRoot.querySelectorAll("*")];
+  sourceNodes.forEach((source, index) => {
+    inlineComputedStylesFromSource(source, targetNodes[index] as HTMLElement);
+  });
+}
+
+function createExportFrame(widthPx: number) {
   const iframe = document.createElement("iframe");
   iframe.setAttribute("aria-hidden", "true");
   iframe.style.position = "fixed";
   iframe.style.left = "-9999px";
   iframe.style.top = "0";
   iframe.style.border = "0";
-  iframe.style.width = `${element.scrollWidth}px`;
-  iframe.style.height = `${element.scrollHeight}px`;
+  iframe.style.width = `${widthPx}px`;
   document.body.appendChild(iframe);
 
   const doc = iframe.contentDocument;
@@ -63,20 +72,100 @@ function cloneForCapture(element: HTMLElement) {
   doc.write('<!DOCTYPE html><html><head></head><body style="margin:0;background:#fff"></body></html>');
   doc.close();
 
-  const clone = element.cloneNode(true) as HTMLElement;
-  const sourceNodes = [element, ...element.querySelectorAll("*")];
-  const targetNodes = [clone, ...clone.querySelectorAll("*")];
-
-  sourceNodes.forEach((source, index) => {
-    inlineComputedStylesFromSource(source, targetNodes[index] as HTMLElement);
-  });
-
-  doc.body.appendChild(clone);
-  return { clone, iframe };
+  return { iframe, doc };
 }
 
-async function captureElement(element: HTMLElement) {
-  const { clone, iframe } = cloneForCapture(element);
+function getPageShellStyle(element: HTMLElement) {
+  const computed = window.getComputedStyle(element);
+  return {
+    width: computed.width,
+    padding: computed.padding,
+    fontFamily: computed.fontFamily,
+    backgroundColor: "#ffffff",
+    color: "#000000",
+    boxSizing: computed.boxSizing,
+  } as const;
+}
+
+function getMeasureShellStyle(element: HTMLElement) {
+  const computed = window.getComputedStyle(element);
+  return {
+    width: computed.width,
+    fontFamily: computed.fontFamily,
+    backgroundColor: "#ffffff",
+    color: "#000000",
+    boxSizing: computed.boxSizing,
+  } as const;
+}
+
+function collectPageBlocks(element: HTMLElement) {
+  const blocks = element.querySelectorAll("[data-page-block]");
+  if (blocks.length > 0) {
+    return Array.from(blocks);
+  }
+  return Array.from(element.children);
+}
+
+function measureBlockHeights(
+  blocks: Element[],
+  element: HTMLElement,
+): number[] {
+  const widthPx = element.scrollWidth;
+  const { iframe, doc } = createExportFrame(widthPx);
+
+  const shell = doc.createElement("div");
+  Object.assign(shell.style, getMeasureShellStyle(element));
+  doc.body.appendChild(shell);
+
+  const heights = blocks.map((block) => {
+    shell.replaceChildren();
+    const clone = block.cloneNode(true) as HTMLElement;
+    shell.appendChild(clone);
+    inlineTreeFromSource(block, clone);
+    return clone.offsetHeight;
+  });
+
+  iframe.remove();
+  return heights;
+}
+
+function paginateBlocks(blocks: Element[], blockHeights: number[], availableHeightPx: number) {
+  const pages: Element[][] = [];
+  let currentPage: Element[] = [];
+  let usedHeight = 0;
+
+  blocks.forEach((block, index) => {
+    const blockHeight = blockHeights[index];
+
+    if (usedHeight + blockHeight > availableHeightPx && currentPage.length > 0) {
+      pages.push(currentPage);
+      currentPage = [];
+      usedHeight = 0;
+    }
+
+    currentPage.push(block);
+    usedHeight += blockHeight;
+  });
+
+  if (currentPage.length > 0) {
+    pages.push(currentPage);
+  }
+
+  return pages;
+}
+
+function getAvailableHeightPx(element: HTMLElement, pageHeightPx: number) {
+  const computed = window.getComputedStyle(element);
+  const paddingTop = parseFloat(computed.paddingTop) || 0;
+  const paddingBottom = parseFloat(computed.paddingBottom) || 0;
+  return pageHeightPx - paddingTop - paddingBottom;
+}
+
+async function captureInFrame(root: HTMLElement, widthPx: number) {
+  const { iframe, doc } = createExportFrame(widthPx);
+  const clone = root.cloneNode(true) as HTMLElement;
+  inlineTreeFromSource(root, clone);
+  doc.body.appendChild(clone);
 
   try {
     return await html2canvas(clone, {
@@ -97,8 +186,44 @@ async function captureElement(element: HTMLElement) {
   }
 }
 
+async function capturePage(
+  blocks: Element[],
+  element: HTMLElement,
+  widthPx: number,
+) {
+  const { iframe, doc } = createExportFrame(widthPx);
+  const page = doc.createElement("div");
+  Object.assign(page.style, getPageShellStyle(element));
+
+  blocks.forEach((block) => {
+    const clone = block.cloneNode(true) as HTMLElement;
+    page.appendChild(clone);
+    inlineTreeFromSource(block, clone);
+  });
+
+  doc.body.appendChild(page);
+
+  try {
+    return await html2canvas(page, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      logging: false,
+      windowWidth: page.scrollWidth,
+      windowHeight: page.scrollHeight,
+      onclone: (clonedDoc) => {
+        clonedDoc.querySelectorAll('style, link[rel="stylesheet"]').forEach((node) => node.remove());
+        clonedDoc.documentElement.style.backgroundColor = "#ffffff";
+        clonedDoc.body.style.backgroundColor = "#ffffff";
+      },
+    });
+  } finally {
+    iframe.remove();
+  }
+}
+
 export async function exportCVAsPNG(element: HTMLElement, filename: string) {
-  const canvas = await captureElement(element);
+  const canvas = await captureInFrame(element, element.scrollWidth);
   const link = document.createElement("a");
   link.download = filename;
   link.href = canvas.toDataURL("image/png");
@@ -106,8 +231,13 @@ export async function exportCVAsPNG(element: HTMLElement, filename: string) {
 }
 
 export async function exportCVAsPDF(element: HTMLElement, filename: string) {
-  const canvas = await captureElement(element);
-  const imgData = canvas.toDataURL("image/png");
+  const widthPx = element.scrollWidth;
+  const pageHeightPx = Math.floor((widthPx * CONTENT_HEIGHT_MM) / A4_WIDTH_MM);
+  const availableHeightPx = getAvailableHeightPx(element, pageHeightPx);
+
+  const blocks = collectPageBlocks(element);
+  const blockHeights = measureBlockHeights(blocks, element);
+  const pages = paginateBlocks(blocks, blockHeights, availableHeightPx);
 
   const pdf = new jsPDF({
     orientation: "portrait",
@@ -115,20 +245,20 @@ export async function exportCVAsPDF(element: HTMLElement, filename: string) {
     format: "a4",
   });
 
-  const imgWidth = A4_WIDTH_MM;
-  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  for (let index = 0; index < pages.length; index++) {
+    if (index > 0) pdf.addPage();
 
-  let heightLeft = imgHeight;
-  let position = 0;
+    const canvas = await capturePage(pages[index], element, widthPx);
+    const sliceHeightMm = (canvas.height * A4_WIDTH_MM) / canvas.width;
 
-  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-  heightLeft -= A4_HEIGHT_MM;
-
-  while (heightLeft > 0) {
-    position = heightLeft - imgHeight;
-    pdf.addPage();
-    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    heightLeft -= A4_HEIGHT_MM;
+    pdf.addImage(
+      canvas.toDataURL("image/png"),
+      "PNG",
+      0,
+      PAGE_MARGIN_MM,
+      A4_WIDTH_MM,
+      sliceHeightMm,
+    );
   }
 
   pdf.save(filename);
