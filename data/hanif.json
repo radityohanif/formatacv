@@ -1,0 +1,484 @@
+{
+  "personalInfo": {
+    "fullName": "Hanif Radityo",
+    "headline": "AI Engineer & Technology Leader — Building Intelligent Products at Scale",
+    "location": "Depok, Jawa Barat, Indonesia",
+    "email": "radityo.hanif@gmail.com",
+    "alternativeEmail": "hanif@tetradata.id",
+    "phone": "+62-812-8030-0537",
+    "linkedin": "linkedin.com/in/hanif-radityo"
+  },
+  "summary": {
+    "shortBio": "Hanif Radityo is an AI-focused technology leader with deep experience in machine learning, computer vision, NLP, and production AI systems—from proof-of-concept to enterprise deployment.",
+    "professionalStatement": "Rizq is written. Effort is my responsibility.",
+    "profileDescription": "Specializes in designing and shipping AI-driven products: LLM integrations, sentiment analysis, OCR, chatbots, facial recognition, and real-time computer vision. Combines hands-on ML engineering (TensorFlow, YOLO, Flask/Python pipelines) with full-stack delivery (Laravel, React, Vue) and data platforms (Google BigQuery). Experienced leading AI startup incubation, mentoring 40+ developers in AI projects, and bridging research prototypes with scalable SaaS and government/enterprise solutions."
+  },
+  "topSkills": [
+    "AI/Machine Learning",
+    "LLM Integration & AI APIs",
+    "Computer Vision",
+    "NLP & Sentiment Analysis",
+    "Python & Flask (ML Services)",
+    "Full Stack Development",
+    "Software Architecture",
+    "Technical Leadership",
+    "Data Processing & BigQuery",
+    "TensorFlow & Deep Learning",
+    "Backend Development",
+    "DevOps"
+  ],
+  "sections": {
+    "education": [
+      {
+        "institution": "Universitas Pembangunan Nasional Veteran Jakarta",
+        "degree": "Bachelor's Degree",
+        "fieldOfStudy": "Computer Science",
+        "location": "Jakarta, Indonesia",
+        "date": {
+          "start": "Jul 2019",
+          "end": "Dec 2024"
+        },
+        "details": [
+          "Thesis: SIBI sign language recognition using real-time computer vision and machine learning (A–Z alphabet classification)."
+        ]
+      }
+    ],
+    "workExperience": [
+      {
+        "company": "Tetra Data Teknologi",
+        "position": "Chief Executive Officer",
+        "employmentType": null,
+        "location": "Tanah Abang, Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Oct 2025",
+          "end": "Present"
+        },
+        "summary": "Leads company strategy with emphasis on AI-enabled software solutions, intelligent automation, and technology services for clients.",
+        "responsibilities": [
+          "Drive product and technical direction for AI-capable software solutions and client-facing technology services.",
+          "Align business execution with emerging AI tooling (LLM APIs, automation, data-driven products).",
+          "Oversee strategic execution, client alignment, and delivery of intelligent digital platforms."
+        ]
+      },
+      {
+        "company": "IMPACTHINK",
+        "position": "Chief Technology Officer",
+        "employmentType": null,
+        "location": "Jakarta, Indonesia",
+        "date": {
+          "start": "Jun 2024",
+          "end": "Present"
+        },
+        "summary": "Leads platform engineering for impacthink.com, including scalable architecture and data-driven features for the learning ecosystem.",
+        "responsibilities": [
+          "Architect, build, and maintain the core e-learning platform with analytics and engagement tracking.",
+          "Define technical roadmap incorporating modern AI-assisted development and automation practices.",
+          "Ensure platform reliability, scalability, and alignment with organizational learning objectives.",
+          "Collaborate with cross-functional teams to deliver personalized, data-informed learning experiences.",
+          "Establish long-term technical foundation for evolving intelligent platform capabilities."
+        ]
+      },
+      {
+        "company": "PT. Cyber Sinergi Indonesia",
+        "position": "Technical Lead",
+        "employmentType": null,
+        "location": "Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Sep 2025",
+          "end": "Dec 2025"
+        },
+        "summary": "Led technical delivery of a Laboratory Information System evaluation product aligned with Common Criteria and ISO/IEC 27001.",
+        "responsibilities": [
+          "Coordinated technical implementation for a regulated laboratory information system evaluation product.",
+          "Ensured solution architecture met security, compliance, and audit requirements.",
+          "Engaged stakeholders through requirements workshops, presentations, and live demonstrations."
+        ]
+      },
+      {
+        "company": "Jala Data Teknologi",
+        "position": "Full Stack Developer",
+        "employmentType": null,
+        "location": "Jakarta Selatan, Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Nov 2022",
+          "end": "Oct 2025"
+        },
+        "summary": "Delivered end-to-end solutions in an IT consulting environment, with strong focus on large-scale data processing and analytics-ready pipelines.",
+        "responsibilities": [
+          "Processed and optimized large-scale datasets (millions of records) using Google BigQuery for analytics and reporting.",
+          "Improved query performance, ETL-style data workflows, and structures supporting downstream ML and BI use cases.",
+          "Developed full-stack components, integrations, and production deployments for enterprise clients.",
+          "Contributed to business analysis, strategic discussions, and presales for data-intensive solutions."
+        ]
+      },
+      {
+        "company": "PT. Astra Graphia Information Technology (AGIT)",
+        "position": "Technical Lead",
+        "employmentType": null,
+        "location": "Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Mar 2024",
+          "end": "Oct 2024"
+        },
+        "summary": "Led application modernization for Telkomsel’s internal Verona vendor management system.",
+        "responsibilities": [
+          "Provided technical direction and hands-on development throughout the enhancement lifecycle.",
+          "Translated business requirements into scalable technical implementations.",
+          "Managed backend engineering, DevOps, deployment pipelines, monitoring, and production stability."
+        ]
+      },
+      {
+        "company": "PT. Astra Graphia Information Technology (AGIT)",
+        "position": "Full Stack Developer",
+        "employmentType": null,
+        "location": "Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Dec 2022",
+          "end": "Mar 2024"
+        },
+        "summary": "Maintained mission-critical Telkomsel enterprise applications across development, staging, and production.",
+        "responsibilities": [
+          "Ensured application stability, reliability, and continuous improvement in high-traffic environments.",
+          "Resolved production issues in coordination with IT users, business teams, and developers.",
+          "Managed deployments and regression testing for seamless enterprise operations."
+        ]
+      },
+      {
+        "company": "Central AI",
+        "position": "Chief Technology Officer",
+        "employmentType": null,
+        "location": "Depok, Jawa Barat, Indonesia",
+        "date": {
+          "start": "Sep 2021",
+          "end": "Feb 2024"
+        },
+        "summary": "CTO of an AI startup incubation born from UPN Veteran Jakarta’s AI Creation competition—leading end-to-end AI product development from PoC to production exploration.",
+        "responsibilities": [
+          "Architected and delivered AI products: WhatsApp-integrated chatbots (rule-based + TensorFlow), real-time OCR (YOLO + TensorFlow), sentiment analysis engines, automated traffic surveillance, and facial recognition systems.",
+          "Led proof-of-concept validation and iteration for multiple AI SaaS ideas before market fit assessment.",
+          "Directed technical innovation across computer vision, NLP, and conversational AI stacks (Flask/Python, ML models).",
+          "Mentored ~40 interns on ML pipelines, model integration, and industry-standard AI engineering practices.",
+          "Established development workflows bridging research prototypes and deployable AI services."
+        ]
+      },
+      {
+        "company": "Kampus Merdeka",
+        "position": "Mentor",
+        "employmentType": null,
+        "location": "Jakarta Raya, Indonesia",
+        "date": {
+          "start": "Aug 2022",
+          "end": "Dec 2022"
+        },
+        "summary": "Mentored interns at PT Central Artificial Intelligence in Full Stack Development and Data Science.",
+        "responsibilities": [
+          "Guided participants on ML-ready data workflows, analytical pipelines, and full-stack AI application development.",
+          "Delivered structured sessions on model integration, data preprocessing, and production-minded coding practices.",
+          "Supervised practical projects aligned with industry AI development standards."
+        ]
+      },
+      {
+        "company": "BISA AI Academy (PT BISA ARTIFISIAL INDONESIA)",
+        "position": "Back End Developer",
+        "employmentType": "Internship",
+        "location": "South Jakarta, Jakarta, Indonesia",
+        "date": {
+          "start": "Feb 2022",
+          "end": "Jul 2022"
+        },
+        "summary": "Backend development within Indonesia’s leading AI academy ecosystem, supporting internal systems for AI education programs.",
+        "responsibilities": [
+          "Implemented backend features for AI academy internal platforms.",
+          "Collaborated on project delivery in a production-oriented AI training environment.",
+          "Applied computer science fundamentals to real-world AI industry software development."
+        ]
+      },
+      {
+        "company": "Baituna",
+        "position": "Graphic Designer and Video Editor",
+        "employmentType": "Self Employed",
+        "location": null,
+        "date": {
+          "start": "2019",
+          "end": "2022"
+        },
+        "summary": "Creative production including graphic design and video editing.",
+        "responsibilities": []
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "Cognitiev – SaaS AI Platform",
+        "category": "AI SaaS / LLM Integration",
+        "description": "Built backend services integrating OpenAI APIs for niche AI features embedded in daily-use applications—demonstrating production LLM integration patterns.",
+        "technologies": [
+          "OpenAI API",
+          "Laravel",
+          "CodeIgniter"
+        ]
+      },
+      {
+        "projectName": "SIBI Sign Language Recognition",
+        "category": "Computer Vision / Thesis",
+        "description": "Real-time computer vision system recognizing Indonesian SIBI sign language alphabet (A–Z) via webcam capture, custom ML model training, and inference API.",
+        "technologies": [
+          "React",
+          "Flask",
+          "Machine Learning",
+          "Computer Vision"
+        ]
+      },
+      {
+        "projectName": "BPOM AI Sentiment Analysis",
+        "category": "NLP / AI Proof of Concept",
+        "description": "AI-driven sentiment analysis platform evaluating public perception of consumer products by aggregating data from BPOM, Wikipedia, and Twitter, with automated sentiment classification.",
+        "technologies": [
+          "Flask",
+          "Machine Learning",
+          "NLP",
+          "Web Scraping"
+        ]
+      },
+      {
+        "projectName": "Central OCR",
+        "category": "Computer Vision / OCR SaaS",
+        "description": "SaaS OCR platform extracting text from images in real time using custom models built with YOLO object detection and TensorFlow.",
+        "technologies": [
+          "YOLO",
+          "TensorFlow",
+          "Flask",
+          "Machine Learning"
+        ]
+      },
+      {
+        "projectName": "Central Chatbot",
+        "category": "Conversational AI",
+        "description": "SaaS AI chatbot integrated with WhatsApp, combining rule-based dialogue flows with TensorFlow-powered knowledge responses.",
+        "technologies": [
+          "TensorFlow",
+          "Flask",
+          "Machine Learning"
+        ]
+      },
+      {
+        "projectName": "Infopublik EMIS Madrasah Dashboard",
+        "category": "Data Analytics / Dashboard",
+        "description": "Web dashboard processing complex EMIS datasets (400+ fields, hundreds of thousands of records) for real-time educational insights—foundation for data-driven and ML-ready reporting.",
+        "technologies": [
+          "Flask",
+          "Python",
+          "Apache ECharts"
+        ]
+      },
+      {
+        "projectName": "Middleware Kemenag – API Management",
+        "category": "API / Data Platform",
+        "description": "API management platform connecting multiple Ministry databases with dynamic GraphQL-style queries—enabling unified data access for downstream analytics and integrations.",
+        "technologies": [
+          "Laravel",
+          "React"
+        ]
+      },
+      {
+        "projectName": "Impacthink E-Learning Platform",
+        "category": "EdTech Platform",
+        "description": "E-learning platform with automated certification, course delivery, content sales, and user engagement analytics.",
+        "technologies": [
+          "Laravel",
+          "React"
+        ]
+      },
+      {
+        "projectName": "Verona Enhancement – Telkomsel",
+        "category": "Enterprise System",
+        "description": "Two-year modernization of Telkomsel’s legacy vendor management system—Yii2 refactor, Vue/Nuxt frontend, optimized multi-level approval workflows.",
+        "technologies": [
+          "Yii2",
+          "Nuxt",
+          "VueJS"
+        ]
+      },
+      {
+        "projectName": "SIANWAR BWI – Waqf Administration Information System",
+        "category": "Government System",
+        "description": "Government system for nazir registration, replacements, ruislag, and seven-level approval with 40+ document types.",
+        "technologies": [
+          "Laravel"
+        ]
+      },
+      {
+        "projectName": "Maisara Travel Agency System",
+        "category": "Travel Management",
+        "description": "Hajj and Umrah package management with sales, commissions, and cost calculation.",
+        "technologies": [
+          "Laravel",
+          "React"
+        ]
+      },
+      {
+        "projectName": "Tetra CRM & Accounting Systems",
+        "category": "Internal Business System",
+        "description": "Internal CRM and accounting for leads, projects, and finance operations.",
+        "technologies": [
+          "Laravel",
+          "VueJS"
+        ]
+      },
+      {
+        "projectName": "ERP Systems: SuksesMegah & Flexindomas",
+        "category": "ERP",
+        "description": "ERP for manufacturing and trading: products, quotations, invoices, delivery orders, and vendor management.",
+        "technologies": [
+          "Laravel"
+        ]
+      },
+      {
+        "projectName": "Pastipulang",
+        "category": "Safety / Verification System",
+        "description": "School pick-up system with guardian verification for child safety.",
+        "technologies": [
+          "Laravel",
+          "React"
+        ]
+      },
+      {
+        "projectName": "Permira UPNVJ – Voting Application",
+        "category": "High-Traffic Platform",
+        "description": "Election platform supporting 2,000–3,000 concurrent users.",
+        "technologies": [
+          "Flask",
+          "Python",
+          "NodeJS"
+        ]
+      },
+      {
+        "projectName": "Maintenance Support – Telkomsel",
+        "category": "Enterprise Maintenance",
+        "description": "Legacy enterprise maintenance: PHP 7→8 migration, security fixes, performance optimization.",
+        "technologies": [
+          "Laravel",
+          "Yii2",
+          "ExpressJS"
+        ]
+      },
+      {
+        "projectName": "Papanketik – Employee Management System",
+        "category": "HR System",
+        "description": "HR, payroll, and task management system.",
+        "technologies": [
+          "Laravel"
+        ]
+      },
+      {
+        "projectName": "Paperplus Media Platform",
+        "category": "Content Platform",
+        "description": "Modern news and content delivery platform.",
+        "technologies": [
+          "React",
+          "StrapiJS"
+        ]
+      },
+      {
+        "projectName": "Company Profile Websites",
+        "category": "Web Development",
+        "description": "Responsive company profile sites for multiple organizations.",
+        "technologies": [
+          "Bootstrap 5",
+          "React",
+          "Chakra UI"
+        ]
+      },
+      {
+        "projectName": "Central POS",
+        "category": "SaaS",
+        "description": "Standard SaaS point-of-sale platform.",
+        "technologies": [
+          "Flask",
+          "React"
+        ]
+      }
+    ],
+    "additional": {
+      "technicalSkills": [
+        "AI/Machine Learning",
+        "OpenAI API / LLM Integration",
+        "TensorFlow",
+        "YOLO",
+        "Computer Vision",
+        "NLP & Sentiment Analysis",
+        "Python",
+        "Flask",
+        "Google BigQuery",
+        "Data Pipelines & ETL",
+        "PHP",
+        "Laravel",
+        "React JS",
+        "Vue JS",
+        "Node JS",
+        "Go",
+        "DevOps",
+        "SQL",
+        "ExpressJS",
+        "Yii2",
+        "Nuxt",
+        "Flutter",
+        "Web Scraping",
+        "Tailwind CSS",
+        "Chakra UI",
+        "Apache ECharts",
+        "StrapiJS"
+      ],
+      "businessSkills": [
+        "AI Product Strategy",
+        "Technical Leadership",
+        "Solution Architecture",
+        "Proof-of-Concept to Production",
+        "Team Mentoring (AI/ML teams)",
+        "Stakeholder Communication",
+        "Presales Support",
+        "Requirement Gathering",
+        "Strategic Planning"
+      ],
+      "domains": [
+        "Artificial Intelligence & ML",
+        "Computer Vision & OCR",
+        "NLP & Sentiment Analysis",
+        "Conversational AI & Chatbots",
+        "LLM-Powered Applications",
+        "Data Analytics & Dashboards",
+        "Enterprise Software",
+        "Government Systems",
+        "E-Learning",
+        "API Management",
+        "ERP & CRM"
+      ],
+      "languages": [],
+      "certificationsAndTraining": [
+        "BISA AI Academy — AI industry internship program",
+        "UPN Veteran Jakarta — AI Creation competition (Central AI incubation origin)"
+      ],
+      "awards": []
+    }
+  },
+  "metadata": {
+    "templateType": "ATS resume",
+    "layout": "single-column",
+    "sourceType": [
+      "LinkedIn profile export",
+      "Creative CV portfolio"
+    ],
+    "pageSize": "A4 or Letter",
+    "style": {
+      "fontFamily": "Sans-serif",
+      "colorMode": "black and white",
+      "sectionHeaders": "uppercase with horizontal divider",
+      "bulletStyle": "standard dot bullets"
+    },
+    "notes": [
+      "Profile repositioned toward AI engineering and AI product leadership based on documented experience.",
+      "AI projects listed first; enterprise/government projects retained for breadth.",
+      "Some employment dates overlap because of concurrent roles.",
+      "Validate contact fields before final CV export."
+    ]
+  }
+}
