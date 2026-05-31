@@ -46,7 +46,7 @@ export function LocalStorageStatus({
     return (
       <Badge variant="secondary" className="gap-1.5 border-success/30 bg-success/10 text-success">
         <Cloud className="h-3 w-3" />
-        Saved locally{relativeTime ? ` · ${relativeTime}` : ""}
+        Draft saved locally{relativeTime ? ` · ${relativeTime}` : ""}
       </Badge>
     );
   }

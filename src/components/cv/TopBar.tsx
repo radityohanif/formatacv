@@ -1,4 +1,6 @@
 import { Eye } from "lucide-react";
+import { AppBrand, AppLogo } from "@/components/app/AppBrand";
+import { GitHubLink } from "@/components/app/GitHubLink";
 import { Button } from "@/components/ui/button";
 import { LocalStorageStatus } from "./LocalStorageStatus";
 import { ExportActions } from "./ExportActions";
@@ -25,23 +27,20 @@ export function TopBar({
   return (
     <header className="sticky top-0 z-30 flex flex-wrap items-center gap-3 border-b border-border bg-background/85 px-4 py-3 backdrop-blur lg:px-6">
       <div className="flex items-center gap-2 lg:hidden">
-        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-bold text-primary-foreground">
-          A
-        </div>
-        <span className="text-sm font-semibold">ATS CV Builder</span>
+        <AppLogo size={32} className="h-8 w-8 rounded-md" />
+        <AppBrand compact />
       </div>
 
-      <div className="hidden lg:block">
-        <h1 className="text-sm font-semibold text-foreground">
-          Create a clean, professional, ATS-friendly resume
-        </h1>
-        <p className="text-[11px] text-muted-foreground">
-          Guided builder · No account · Auto-saved locally
+      <div className="hidden min-w-0 lg:block">
+        <AppBrand />
+        <p className="mt-0.5 text-[11px] text-muted-foreground">
+          Create clean, professional, ATS-friendly CVs directly in your browser.
         </p>
       </div>
 
       <div className="ml-auto flex flex-wrap items-center gap-2">
         <LocalStorageStatus status={saveStatus} lastSaved={lastSaved} />
+        <GitHubLink />
         {onPreview && (
           <Button variant="outline" size="sm" className="lg:hidden" onClick={onPreview}>
             <Eye className="h-4 w-4" />

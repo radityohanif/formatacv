@@ -22,23 +22,9 @@ import {
 import { useCVStorage } from "@/hooks/useCVStorage";
 import { getValidationWarnings } from "@/lib/validation";
 import { sectionIds, type SectionId } from "@/data/sampleCV";
+import { ProductIntro } from "@/components/app/ProductIntro";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ATS CV Builder — Clean, professional resumes" },
-      {
-        name: "description",
-        content:
-          "Build a clean, ATS-friendly resume with a guided builder. No login. Export to PDF or PNG.",
-      },
-      { property: "og:title", content: "ATS CV Builder" },
-      {
-        property: "og:description",
-        content: "Guided, no-login CV builder with a live ATS-friendly preview.",
-      },
-    ],
-  }),
   component: Index,
 });
 
@@ -118,11 +104,7 @@ function Index() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-background text-foreground">
-      <StepSidebar
-        active={active}
-        onChange={setActive}
-        completion={completion}
-      />
+      <StepSidebar active={active} onChange={setActive} completion={completion} />
 
       <main className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <TopBar
@@ -183,6 +165,7 @@ function Index() {
             </div>
 
             <div className="mx-auto max-w-3xl space-y-4">
+              <ProductIntro />
               <ValidationBanner warnings={warnings} />
               <div className="hidden md:block">
                 <ChecklistCard items={checklist} />

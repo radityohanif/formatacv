@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { AppBrand, AppLogo } from "@/components/app/AppBrand";
+import { RepositoryFooterCard } from "@/components/app/RepositoryFooterCard";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { sectionIds, sectionMeta, type SectionId } from "@/data/sampleCV";
 
 const SIDEBAR_COLLAPSED_KEY = "cv_sidebar_collapsed";
@@ -44,30 +41,19 @@ export function StepSidebar({ active, onChange, completion }: Props) {
             !collapsed && "p-5",
           )}
         >
-          <div
-            className={cn(
-              "flex items-center gap-2",
-              collapsed && "justify-center",
-            )}
-          >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-              A
-            </div>
-            {!collapsed && (
-              <div className="min-w-0">
-                <div className="text-sm font-semibold text-foreground">ATS CV Builder</div>
-                <div className="text-[11px] text-muted-foreground">Clean. Simple. Hireable.</div>
-              </div>
-            )}
+          <div className={cn("flex items-center gap-2", collapsed && "justify-center")}>
+            <AppLogo size={36} className="h-9 w-9" />
+            {!collapsed && <AppBrand showBadge />}
           </div>
 
-          <nav className="flex flex-col gap-1 overflow-y-auto">
+          <nav className="flex flex-col gap-1 overflow-y-auto" aria-label="CV sections">
             {sectionIds.map((id, i) => {
               const isActive = id === active;
               const done = completion[id];
               const stepButton = (
                 <button
                   key={id}
+                  type="button"
                   onClick={() => onChange(id)}
                   className={cn(
                     "group flex items-center rounded-lg text-left transition-all",
@@ -112,6 +98,8 @@ export function StepSidebar({ active, onChange, completion }: Props) {
             })}
           </nav>
         </div>
+
+        <RepositoryFooterCard collapsed={collapsed} />
 
         <Button
           type="button"
