@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AlertTriangle, Cloud, CloudOff, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { SaveStatus } from "@/hooks/useCVStorage";
@@ -19,6 +20,19 @@ export function LocalStorageStatus({
   status: SaveStatus;
   lastSaved: Date | null;
 }) {
+  const [relativeTime, setRelativeTime] = useState("");
+
+  useEffect(() => {
+    if (!lastSaved) {
+      setRelativeTime("");
+      return;
+    }
+
+    const update = () => setRelativeTime(formatRelativeTime(lastSaved));
+    update();
+    const timer = window.setInterval(update, 10_000);
+    return () => window.clearInterval(timer);
+  }, [lastSaved]);
   if (status === "saving") {
     return (
       <Badge variant="secondary" className="gap-1.5">
@@ -32,7 +46,7 @@ export function LocalStorageStatus({
     return (
       <Badge variant="secondary" className="gap-1.5 border-success/30 bg-success/10 text-success">
         <Cloud className="h-3 w-3" />
-        Saved locally{lastSaved ? ` · ${formatRelativeTime(lastSaved)}` : ""}
+        Saved locally{relativeTime ? ` · ${relativeTime}` : ""}
       </Badge>
     );
   }

@@ -1,23 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { emptyCV, loadCVData, STORAGE_KEY, type CVData } from "@/data/sampleCV";
+import { emptyCV, loadCVData, sampleCV, STORAGE_KEY, type CVData } from "@/data/sampleCV";
 
 const DEBOUNCE_MS = 500;
 
 export type SaveStatus = "idle" | "saving" | "saved";
 
 export function useCVStorage() {
-  const [data, setDataState] = useState<CVData>(() => loadCVData());
+  const [data, setDataState] = useState<CVData>(sampleCV);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>("saved");
-  const [lastSaved, setLastSaved] = useState<Date | null>(() =>
-    typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY) ? new Date() : null,
-  );
-  const isFirstRender = useRef(true);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const isHydrating = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+    setDataState(loadCVData());
+    try {
+      if (localStorage.getItem(STORAGE_KEY)) {
+        setLastSaved(new Date());
+      }
+    } catch {
+      // localStorage unavailable
     }
+    isHydrating.current = false;
+  }, []);
+
+  useEffect(() => {
+    if (isHydrating.current) return;
 
     setSaveStatus("saving");
     const timer = window.setTimeout(() => {
